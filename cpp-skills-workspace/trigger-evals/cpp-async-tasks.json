@@ -1,0 +1,22 @@
+[
+  {"query": "i want to run 200 image downloads in parallel and sum the total bytes, each one is I/O-bound, C++17, what's the best way and the code", "should_trigger": true},
+  {"query": "parallelize this recursive sum over a huge array using std::async divide-and-conquer without spawning too many threads, lib compute", "should_trigger": true},
+  {"query": "i did a loop calling std::async(process, item) for each item expecting parallelism but it's as slow as sequential, what did i do wrong", "should_trigger": true},
+  {"query": "run this function on another thread and get its result later without blocking the caller", "should_trigger": true},
+  {"query": "fan out one task per file to process them concurrently and then collect all the results", "should_trigger": true},
+  {"query": "set up a thread pool so i can submit many short tasks and get futures back instead of spawning a thread each", "should_trigger": true},
+  {"query": "i need a std::promise/std::future handoff so one thread computes a value and another waits for it", "should_trigger": true},
+  {"query": "make this computation use all my cores with a fork-join over the input range", "should_trigger": true},
+  {"query": "use std::packaged_task to queue work whose result i still want to retrieve later", "should_trigger": true},
+
+  {"query": "should i protect this shared counter with a mutex or an atomic? what's the difference", "should_trigger": false},
+  {"query": "add a reader-writer lock to this cache class, generate the header, lib router", "should_trigger": false},
+  {"query": "my two-mutex program deadlocks with CPU at zero, diagnose and fix it", "should_trigger": false},
+  {"query": "is it even worth parallelizing this, and how should i split the work across cores", "should_trigger": false},
+  {"query": "how do i measure the speedup and efficiency of my parallel version with a proper harness", "should_trigger": false},
+  {"query": "which primitive do i pick for many readers and one rare writer on a shared map", "should_trigger": false},
+  {"query": "generate a C++17 counting semaphore with an RAII guard to cap concurrent access at 4", "should_trigger": false},
+  {"query": "set up a producer-consumer server with a blocking queue and worker threads draining it", "should_trigger": false},
+  {"query": "what's the difference between concurrency and parallelism conceptually", "should_trigger": false},
+  {"query": "how do i make an async HTTP request with libcurl's multi interface and epoll", "should_trigger": false}
+]

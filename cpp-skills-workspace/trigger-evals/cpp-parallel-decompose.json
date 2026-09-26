@@ -1,0 +1,22 @@
+[
+  {"query": "is it worth parallelizing my program that spends 40% of its time reading disk sequentially and 60% on CPU? how much speedup on 8 cores", "should_trigger": true},
+  {"query": "i want to plan a parallel version of a 1000x1000 matrix multiply — how should i decompose it, what granularity, how many tasks? no code yet", "should_trigger": true},
+  {"query": "i parallelized my algorithm and threw 16 threads at 16 cores but only got 3x speedup, why can't i get near 16x and how do i find the limit", "should_trigger": true},
+  {"query": "will adding more threads actually help here or am i going to hit diminishing returns", "should_trigger": true},
+  {"query": "how do i break this problem into independent parallel tasks and figure out the dependencies", "should_trigger": true},
+  {"query": "what speedup can i realistically expect from parallelizing this given 90% of it is parallelizable", "should_trigger": true},
+  {"query": "should i use domain decomposition or functional decomposition for this image processing pipeline", "should_trigger": true},
+  {"query": "how do i decide the right task granularity so i don't drown in synchronization overhead", "should_trigger": true},
+  {"query": "before i write any threads, help me estimate whether parallelizing this nightly batch job is even worthwhile", "should_trigger": true},
+
+  {"query": "measure whether my parallel sort is actually faster than sequential, with warm-up and averaging, give me the harness", "should_trigger": false},
+  {"query": "parallelize this recursive array sum with std::async and a depth limit, lib compute, give me the code", "should_trigger": false},
+  {"query": "should i use a mutex or an atomic for this shared counter", "should_trigger": false},
+  {"query": "my threaded program deadlocks sometimes, diagnose it", "should_trigger": false},
+  {"query": "write a thread-safe reader-writer cache class with shared_mutex", "should_trigger": false},
+  {"query": "run 200 downloads in parallel and gather the total bytes with futures", "should_trigger": false},
+  {"query": "generate a C++17 barrier fallback class for synchronizing worker threads each phase", "should_trigger": false},
+  {"query": "how do i profile my single-threaded C++ program to find the hot function", "should_trigger": false},
+  {"query": "explain Amdahl's law and Gustafson's law for a class i'm teaching", "should_trigger": false},
+  {"query": "how do i shard my postgres database across multiple nodes for scale", "should_trigger": false}
+]

@@ -1,0 +1,22 @@
+[
+  {"query": "write the header for a thread-safe RouteTable class holding an unordered_map<string,string> read by many threads and rarely updated, lib router, C++17", "should_trigger": true},
+  {"query": "generate a counting semaphore in C++17 to cap concurrent downloads at 4, with an RAII guard so a permit isn't leaked on exception, lib downloader", "should_trigger": true},
+  {"query": "write me a class that lets multiple threads wait for a one-shot ready signal and then all proceed, lib engine", "should_trigger": true},
+  {"query": "add a reader-writer lock to this cache class so readers don't block each other", "should_trigger": true},
+  {"query": "protect this critical section that updates two members together with a mutex, make it exception-safe", "should_trigger": true},
+  {"query": "i need a condition variable wait/notify so the consumer sleeps until the buffer has data, generate it", "should_trigger": true},
+  {"query": "make this shared counter thread-safe, it's just an increment from a bunch of threads", "should_trigger": true},
+  {"query": "implement a reusable barrier for C++17 since std::barrier is C++20, threads rendezvous each iteration", "should_trigger": true},
+  {"query": "guard this map access with the right lock so concurrent writes don't corrupt it, emit the code", "should_trigger": true},
+
+  {"query": "should i use a mutex or an atomic for this shared counter? what's the tradeoff", "should_trigger": false},
+  {"query": "my two-thread two-mutex program deadlocks sometimes with CPU at zero, diagnose it", "should_trigger": false},
+  {"query": "i added a mutex but the result is still wrong and depends on which thread runs first, why", "should_trigger": false},
+  {"query": "run these 200 downloads in parallel with futures and gather the total bytes, give me the code", "should_trigger": false},
+  {"query": "parallelize this recursive array sum with std::async and a depth limit, lib compute", "should_trigger": false},
+  {"query": "is parallelizing this even worth it and how should i split the work across cores", "should_trigger": false},
+  {"query": "measure whether my parallel sort is actually faster than sequential with a proper timing harness", "should_trigger": false},
+  {"query": "which is faster to choose here, a semaphore or a mutex, for my resource pool", "should_trigger": false},
+  {"query": "write a to_json/from_json for this DTO struct using nlohmann json", "should_trigger": false},
+  {"query": "set up a thread-safe blocking queue for a producer-consumer server with worker threads", "should_trigger": false}
+]

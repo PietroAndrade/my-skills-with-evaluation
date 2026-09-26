@@ -1,0 +1,21 @@
+[
+  {"query": "write a C++17 harness that compares my sequential vs parallel sum and reports speedup and efficiency, lib bench", "should_trigger": true},
+  {"query": "my merge sort benchmark gives wildly different numbers every run, how do i get a reliable measurement, C++17", "should_trigger": true},
+  {"query": "how do i correctly measure whether my parallel sort is actually faster than the sequential one? it sorts in place", "should_trigger": true},
+  {"query": "i need a timing harness that averages over many runs after a warm-up and reports stddev", "should_trigger": true},
+  {"query": "compute the efficiency of my parallel algorithm across cores from the measured speedup", "should_trigger": true},
+  {"query": "why is my benchmark reporting near-zero time for the parallel version, that can't be right", "should_trigger": true},
+  {"query": "how do i time sequential versus parallel and prove the speedup number is trustworthy", "should_trigger": true},
+  {"query": "set up a proper microbenchmark for this function so the compiler doesn't optimize the work away", "should_trigger": true},
+
+  {"query": "is it worth parallelizing this and what speedup does Amdahl's law predict on 8 cores", "should_trigger": false},
+  {"query": "i got 3x on 16 cores, why can't i get closer to 16x and how do i find where the limit is", "should_trigger": false},
+  {"query": "parallelize this recursive sum with std::async and a depth threshold, lib compute", "should_trigger": false},
+  {"query": "should i pick a mutex or an atomic for this shared counter", "should_trigger": false},
+  {"query": "my two-mutex code hangs with CPU at zero, diagnose the deadlock", "should_trigger": false},
+  {"query": "write a reader-writer lock class with shared_mutex for a config cache", "should_trigger": false},
+  {"query": "run 200 downloads in parallel and sum the bytes with a thread pool", "should_trigger": false},
+  {"query": "how do i decompose this problem into parallel tasks and choose granularity", "should_trigger": false},
+  {"query": "how do i set up Google Benchmark in my CMake project and write a first benchmark", "should_trigger": false},
+  {"query": "how do i profile memory allocations in my C++ program with valgrind massif", "should_trigger": false}
+]
