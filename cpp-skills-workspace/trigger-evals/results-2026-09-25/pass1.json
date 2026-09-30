@@ -1,0 +1,994 @@
+[
+  {
+    "query": "my C++ program with two threads sharing two std::mutex freezes completely and CPU sits near zero. what's going on",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "the program doesn't hang but one of my threads seems to never get to run, it's always waiting on the lock while the others hog it",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "i protected the shared variable with a mutex, thread sanitizer is clean, but the final result still changes from run to run. why",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "intermittent crash under load in my threaded code, only happens sometimes and disappears when i add a print to investigate",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "two of my threads are pegging the CPU at 100% but making no progress, each releases the lock and retries at the same time",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "works fine in debug but gives wrong results occasionally in a release -O2 build in the multithreaded code",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "my concurrent code sometimes deadlocks, how do i find the cause and fix it",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "should i use std::atomic or std::mutex for a counter several threads increment? what's the difference",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "my shared counter should reach 20 million but it lands on a smaller random number every run. where's the bug",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "write the header for a thread-safe class with shared_mutex for many readers, lib router",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "generate a C++17 counting semaphore to cap simultaneous downloads, with an RAII guard",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "is it worth parallelizing? my code is 60% CPU and 40% disk I/O. how much speedup should i expect",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i reliably measure the speedup and efficiency of my parallel version versus the sequential one",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i want to parallelize a recursive sum of a huge array with std::async without spawning too many threads",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "my HTTP server returns 500 occasionally and i don't know why, how do i debug it",
+    "triggered_target": false,
+    "skills_invoked": [
+      "superpowers:systematic-debugging"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "generate a counting semaphore in C++17 to cap concurrent downloads at 4, with an RAII guard so a permit isn't leaked on exception, lib downloader",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "my unit test fails intermittently in CI but passes locally, it's flaky",
+    "triggered_target": false,
+    "skills_invoked": [
+      "superpowers:systematic-debugging"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i have several threads locking a mutex with lock() and unlocking at the end, but when one returns early the whole program hangs and the others get stuck",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "what's the difference between barrier and latch in C++20 for synchronizing threads",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "write the header for a thread-safe RouteTable class holding an unordered_map<string,string> read by many threads and rarely updated, lib router, C++17",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "write me a class that lets multiple threads wait for a one-shot ready signal and then all proceed, lib engine",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "i need a condition variable wait/notify so the consumer sleeps until the buffer has data, generate it",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "make this shared counter thread-safe, it's just an increment from a bunch of threads",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "add a reader-writer lock to this cache class so readers don't block each other",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "how do i use gdb to set a conditional breakpoint on a specific function",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "protect this critical section that updates two members together with a mutex, make it exception-safe",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "my two-thread two-mutex program deadlocks sometimes with CPU at zero, diagnose it",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "implement a reusable barrier for C++17 since std::barrier is C++20, threads rendezvous each iteration",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "should i use a mutex or an atomic for this shared counter? what's the tradeoff",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": false
+  },
+  {
+    "query": "i added a mutex but the result is still wrong and depends on which thread runs first, why",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "run these 200 downloads in parallel with futures and gather the total bytes, give me the code",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "is parallelizing this even worth it and how should i split the work across cores",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "parallelize this recursive array sum with std::async and a depth limit, lib compute",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "guard this map access with the right lock so concurrent writes don't corrupt it, emit the code",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "measure whether my parallel sort is actually faster than sequential with a proper timing harness",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i want to run 200 image downloads in parallel and sum the total bytes, each one is I/O-bound, C++17, what's the best way and the code",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "set up a thread-safe blocking queue for a producer-consumer server with worker threads",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-producer-consumer"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "which is faster to choose here, a semaphore or a mutex, for my resource pool",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "parallelize this recursive sum over a huge array using std::async divide-and-conquer without spawning too many threads, lib compute",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "run this function on another thread and get its result later without blocking the caller",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "write a to_json/from_json for this DTO struct using nlohmann json",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i need a std::promise/std::future handoff so one thread computes a value and another waits for it",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "set up a thread pool so i can submit many short tasks and get futures back instead of spawning a thread each",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "use std::packaged_task to queue work whose result i still want to retrieve later",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "fan out one task per file to process them concurrently and then collect all the results",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "make this computation use all my cores with a fork-join over the input range",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "should i protect this shared counter with a mutex or an atomic? what's the difference",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "is it even worth parallelizing this, and how should i split the work across cores",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i did a loop calling std::async(process, item) for each item expecting parallelism but it's as slow as sequential, what did i do wrong",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "my two-mutex program deadlocks with CPU at zero, diagnose and fix it",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "add a reader-writer lock to this cache class, generate the header, lib router",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "generate a C++17 counting semaphore with an RAII guard to cap concurrent access at 4",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "which primitive do i pick for many readers and one rare writer on a shared map",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i make an async HTTP request with libcurl's multi interface and epoll",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-wrapping-c-pure-posix"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "set up a producer-consumer server with a blocking queue and worker threads draining it",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-producer-consumer"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "is it worth parallelizing my program that spends 40% of its time reading disk sequentially and 60% on CPU? how much speedup on 8 cores",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "i want to plan a parallel version of a 1000x1000 matrix multiply \u2014 how should i decompose it, what granularity, how many tasks? no code yet",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "i parallelized my algorithm and threw 16 threads at 16 cores but only got 3x speedup, why can't i get near 16x and how do i find the limit",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "what's the difference between concurrency and parallelism conceptually",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "what speedup can i realistically expect from parallelizing this given 90% of it is parallelizable",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "how do i break this problem into independent parallel tasks and figure out the dependencies",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "will adding more threads actually help here or am i going to hit diminishing returns",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "how do i decide the right task granularity so i don't drown in synchronization overhead",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "should i use domain decomposition or functional decomposition for this image processing pipeline",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "measure whether my parallel sort is actually faster than sequential, with warm-up and averaging, give me the harness",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "parallelize this recursive array sum with std::async and a depth limit, lib compute, give me the code",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "before i write any threads, help me estimate whether parallelizing this nightly batch job is even worthwhile",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "my threaded program deadlocks sometimes, diagnose it",
+    "triggered_target": false,
+    "skills_invoked": [
+      "superpowers:systematic-debugging"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "generate a C++17 barrier fallback class for synchronizing worker threads each phase",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "write a thread-safe reader-writer cache class with shared_mutex",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "run 200 downloads in parallel and gather the total bytes with futures",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "should i use a mutex or an atomic for this shared counter",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "write a C++17 harness that compares my sequential vs parallel sum and reports speedup and efficiency, lib bench",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "my merge sort benchmark gives wildly different numbers every run, how do i get a reliable measurement, C++17",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "how do i correctly measure whether my parallel sort is actually faster than the sequential one? it sorts in place",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "how do i profile my single-threaded C++ program to find the hot function",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i need a timing harness that averages over many runs after a warm-up and reports stddev",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "compute the efficiency of my parallel algorithm across cores from the measured speedup",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "why is my benchmark reporting near-zero time for the parallel version, that can't be right",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "how do i time sequential versus parallel and prove the speedup number is trustworthy",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": true
+  },
+  {
+    "query": "explain Amdahl's law and Gustafson's law for a class i'm teaching",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "i got 3x on 16 cores, why can't i get closer to 16x and how do i find where the limit is",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "set up a proper microbenchmark for this function so the compiler doesn't optimize the work away",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true,
+    "pass": false
+  },
+  {
+    "query": "how do i measure the speedup and efficiency of my parallel version with a proper harness",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-benchmark"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "is it worth parallelizing this and what speedup does Amdahl's law predict on 8 cores",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "my two-mutex code hangs with CPU at zero, diagnose the deadlock",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "write a reader-writer lock class with shared_mutex for a config cache",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i decompose this problem into parallel tasks and choose granularity",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "run 200 downloads in parallel and sum the bytes with a thread pool",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "should i pick a mutex or an atomic for this shared counter",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i shard my postgres database across multiple nodes for scale",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i set up Google Benchmark in my CMake project and write a first benchmark",
+    "triggered_target": false,
+    "skills_invoked": [
+      "conan-cmake"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "how do i profile memory allocations in my C++ program with valgrind massif",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  },
+  {
+    "query": "parallelize this recursive sum with std::async and a depth threshold, lib compute",
+    "triggered_target": false,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": false,
+    "pass": true
+  }
+]

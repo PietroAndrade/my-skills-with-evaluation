@@ -1,0 +1,227 @@
+[
+  {
+    "query": "should i use a mutex or an atomic for this shared counter? what's the tradeoff",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_names": [
+      "Skill"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false
+  },
+  {
+    "query": "should i use a mutex or an atomic for this shared counter? what's the tradeoff",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_names": [
+      "Skill"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": false
+  },
+  {
+    "query": "my shared counter should reach 20 million but it lands on a smaller random number every run. where's the bug",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true
+  },
+  {
+    "query": "add a reader-writer lock to this cache class so readers don't block each other",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true
+  },
+  {
+    "query": "add a reader-writer lock to this cache class so readers don't block each other",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-synchronization",
+    "should_trigger": true
+  },
+  {
+    "query": "guard this map access with the right lock so concurrent writes don't corrupt it, emit the code",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-synchronization",
+    "should_trigger": true
+  },
+  {
+    "query": "fan out one task per file to process them concurrently and then collect all the results",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "fan out one task per file to process them concurrently and then collect all the results",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "guard this map access with the right lock so concurrent writes don't corrupt it, emit the code",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-synchronization"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-synchronization",
+    "should_trigger": true
+  },
+  {
+    "query": "make this computation use all my cores with a fork-join over the input range",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "make this computation use all my cores with a fork-join over the input range",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "i did a loop calling std::async(process, item) for each item expecting parallelism but it's as slow as sequential, what did i do wrong",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_names": [
+      "Skill"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "i did a loop calling std::async(process, item) for each item expecting parallelism but it's as slow as sequential, what did i do wrong",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-async-tasks"
+    ],
+    "tool_names": [
+      "Skill"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-async-tasks",
+    "should_trigger": true
+  },
+  {
+    "query": "set up a proper microbenchmark for this function so the compiler doesn't optimize the work away",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true
+  },
+  {
+    "query": "will adding more threads actually help here or am i going to hit diminishing returns",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [],
+    "tool_events": 0,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true
+  },
+  {
+    "query": "will adding more threads actually help here or am i going to hit diminishing returns",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-parallel-decompose"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-parallel-decompose",
+    "should_trigger": true
+  },
+  {
+    "query": "my shared counter should reach 20 million but it lands on a smaller random number every run. where's the bug",
+    "triggered_target": true,
+    "skills_invoked": [
+      "cpp-concurrency-debug"
+    ],
+    "tool_names": [
+      "Bash",
+      "Skill"
+    ],
+    "tool_events": 2,
+    "skill": "cpp-concurrency-debug",
+    "should_trigger": true
+  },
+  {
+    "query": "set up a proper microbenchmark for this function so the compiler doesn't optimize the work away",
+    "triggered_target": false,
+    "skills_invoked": [],
+    "tool_names": [
+      "Bash"
+    ],
+    "tool_events": 1,
+    "skill": "cpp-parallel-benchmark",
+    "should_trigger": true
+  }
+]

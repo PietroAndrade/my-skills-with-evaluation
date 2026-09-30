@@ -1,0 +1,33 @@
+{
+  "skill_name": "cpp-nlohmann-json",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "eval-enum-struct",
+      "prompt": "Make LogLevel (Trace/Debug/Info/Warn/Error) serialize to/from JSON strings, and add JSON serialization to a LogEntry struct with fields: level (LogLevel), message (string), timestampMs (uint64_t). Put it in a lib called 'logger', namespace 'logger'. Use project conventions: enum macro + friend to_json/from_json.",
+      "expected_output": "Header with NLOHMANN_JSON_SERIALIZE_ENUM for LogLevel and friend to_json/from_json declared in LogEntry. Cpp with to_json building json{} initializer and from_json using j.value() with defaults.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "eval_name": "eval-safe-parse",
+      "prompt": "Write from_json for a FilterRule struct: string id, vector<string> blockedHosts, optional<string> comment. The JSON may be missing any field. Must not throw on partial input. Use j.value() for scalars, and guards for the array.",
+      "expected_output": "from_json using j.value() for id and comment, contains+is_array guard for blockedHosts loop, no at() calls, no exceptions propagated.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "eval-posix-enummap",
+      "prompt": "Add JSON serialization for PeerDto in namespace 'net'. It holds: vector<in_addr> addresses and map<Protocol, Port> routes where Protocol and Port are enums. Protocol maps to strings (tcp->\"tcp\", udp->\"udp\", icmp->\"icmp\"), Port maps to strings (http->\"80\", https->\"443\"). in_addr should serialize as IPv4 string using inet_ntop/inet_pton. The map is enum-keyed so keys must be converted through json().",
+      "expected_output": "SERIALIZE_ENUM for Protocol and Port. to_json converts in_addr via inet_ntop and iterates map converting enums to strings. from_json guards array with contains+is_array, parses map with try/catch skipping unknown keys.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "eval-nested-in-class",
+      "prompt": "In a SessionManager class (namespace 'session') there is a nested enum class Mode {ReadOnly, ReadWrite, Admin} and a nested struct SessionInfo {string id; Mode mode; int ttlSeconds;}. Make both JSON-serializable. Mode maps to strings: ReadOnly->\"read_only\", ReadWrite->\"read_write\", Admin->\"admin\".",
+      "expected_output": "NLOHMANN_JSON_SERIALIZE_ENUM and NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE placed at namespace scope after the class closing brace, using fully-qualified names SessionManager::Mode and SessionManager::SessionInfo.",
+      "files": []
+    }
+  ]
+}

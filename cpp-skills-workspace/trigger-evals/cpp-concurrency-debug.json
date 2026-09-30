@@ -1,0 +1,22 @@
+[
+  {"query": "my C++ program with two threads sharing two std::mutex freezes completely and CPU sits near zero. what's going on", "should_trigger": true},
+  {"query": "i protected the shared variable with a mutex, thread sanitizer is clean, but the final result still changes from run to run. why", "should_trigger": true},
+  {"query": "i have several threads locking a mutex with lock() and unlocking at the end, but when one returns early the whole program hangs and the others get stuck", "should_trigger": true},
+  {"query": "my shared counter should reach 20 million but it lands on a smaller random number every run. where's the bug", "should_trigger": true},
+  {"query": "the program doesn't hang but one of my threads seems to never get to run, it's always waiting on the lock while the others hog it", "should_trigger": true},
+  {"query": "two of my threads are pegging the CPU at 100% but making no progress, each releases the lock and retries at the same time", "should_trigger": true},
+  {"query": "works fine in debug but gives wrong results occasionally in a release -O2 build in the multithreaded code", "should_trigger": true},
+  {"query": "intermittent crash under load in my threaded code, only happens sometimes and disappears when i add a print to investigate", "should_trigger": true},
+  {"query": "my concurrent code sometimes deadlocks, how do i find the cause and fix it", "should_trigger": true},
+
+  {"query": "should i use std::atomic or std::mutex for a counter several threads increment? what's the difference", "should_trigger": false},
+  {"query": "write the header for a thread-safe class with shared_mutex for many readers, lib router", "should_trigger": false},
+  {"query": "generate a C++17 counting semaphore to cap simultaneous downloads, with an RAII guard", "should_trigger": false},
+  {"query": "is it worth parallelizing? my code is 60% CPU and 40% disk I/O. how much speedup should i expect", "should_trigger": false},
+  {"query": "how do i reliably measure the speedup and efficiency of my parallel version versus the sequential one", "should_trigger": false},
+  {"query": "i want to parallelize a recursive sum of a huge array with std::async without spawning too many threads", "should_trigger": false},
+  {"query": "what's the difference between barrier and latch in C++20 for synchronizing threads", "should_trigger": false},
+  {"query": "my HTTP server returns 500 occasionally and i don't know why, how do i debug it", "should_trigger": false},
+  {"query": "my unit test fails intermittently in CI but passes locally, it's flaky", "should_trigger": false},
+  {"query": "how do i use gdb to set a conditional breakpoint on a specific function", "should_trigger": false}
+]

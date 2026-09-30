@@ -1,0 +1,23 @@
+{
+  "skill_name": "cpp-skills",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "interface-eventbus",
+      "prompt": "Create an interface called IEventBus in the reporter lib with two methods: publish that takes a string topic and a string payload (both const ref), and subscribe that takes a const ref string topic and returns nothing.",
+      "expected_output": "interface_event_bus.h with pure virtual methods, virtual destructor, namespace reporter, correct include guard format (if !defined), and mock_event_bus.h with MOCK_METHOD macros"
+    },
+    {
+      "id": 1,
+      "eval_name": "concrete-eventbus",
+      "prompt": "Create a concrete class EventBus implementing IEventBus in the reporter lib. It has a shared_ptr to a zmq context member and a map from string topic to a vector of string callbacks. Constructor takes a shared_ptr to IDependency.",
+      "expected_output": "event_bus.h with final keyword, override on methods, m_ prefixed members, explicit constructor, no implementations in header. event_bus.cpp with proper member init list, two blank lines between methods, namespace wrapping."
+    },
+    {
+      "id": 2,
+      "eval_name": "lib-audit",
+      "prompt": "Create a new lib called audit that depends on logger and filter_dtos. Just the scaffold — no starter interface needed.",
+      "expected_output": "audit/CMakeLists.txt with correct GLOB_RECURSE, POSITION_INDEPENDENT_CODE ON, alias target, BUILD_TESTING guard. audit/test/CMakeLists.txt with UNIT_TEST compile definition. Correct directory structure."
+    }
+  ]
+}
