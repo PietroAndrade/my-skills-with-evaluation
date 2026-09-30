@@ -301,6 +301,40 @@ mechanism lies next to the domain. Both conditions must hold.
 Call it **substrate proximity** for the column, and generate-versus-transform for
 the row.
 
+### The untested cell: plain text, substrate-distant
+
+The plain-text / substrate-distant cell in the matrix above has never been
+run. Both plain-text fixtures (h1, h2, h3) were chosen to be substrate-heavy
+on purpose — a handover note naming Kafka topics and a GPIO line, a leaked
+file naming tables and a retry worker — so the "+1 gap" recorded for that row
+says only that a strong model deletes *visible* plumbing unaided. It says
+nothing about a plain-text input that, like stories 3 and 3b, asks for a
+judgment rather than names a stored object (the story equivalent would be a
+terse bug report or a support ticket with no mechanism written into it at
+all — something that still forces the model to characterize an outcome, just
+not in story grammar).
+
+Two further limits on the "+1 gap" finding, not yet separated from each
+other because only one tier has been tested this way:
+
+- **Tier.** Both h1/h2/h3 ran Opus only. Whether a weaker tier also cleans
+  visible plumbing unaided — the way Haiku and Sonnet both suppressed
+  mechanism-as-outcome once the skill was loaded, per the cross-tier section
+  above — has not been checked. It is possible the "strong model deletes
+  plumbing for free" finding is itself a capability effect that doesn't
+  survive at Haiku or Sonnet, the same way branch-completeness didn't.
+- **Task, not input format.** "Transform" so far has only meant "delete
+  mechanism that's already written down." A transform that instead asks the
+  model to *reword* mechanism-heavy text into outcome language without
+  deleting information (e.g. turning a log-line assertion into a behavioral
+  one, keeping the underlying fact) has not been tried, and may behave
+  differently from a clean deletion.
+
+**Consequence:** the claim "the skill answers stories, not plain text" should
+be read as "the skill answers stories, not the two kinds of mechanism-heavy
+plain text tested here, on Opus." It is not evidence that plain-text input
+never needs the skill — only that these specific fixtures didn't.
+
 **Substrate** is the layer of vocabulary that sits underneath a domain: the words
 for how the system stores, transports and manipulates the thing, as opposed to
 the words for what happens to someone. A firewall rule's substrate is the rule
@@ -553,6 +587,188 @@ exempt-vs-not comparison in the Haiku file is the leading candidate — a
 tighter rubric might have been what should have driven the prompt/skill
 toward producing it in the first place, which a rescoring of the existing
 file can't test for).
+
+### Rubric v1, corrected — full re-score across all three tiers
+
+The story-1 audit above was a spot check that found three scoring errors.
+Before building rubric v2, the same corrected discipline — #2 only for the
+literal "appears in list/config" pattern (not any mechanism-flavored line,
+which is criterion #1's job), #7/#12 checked by actually reading for
+duplicate scenarios and inconsistent phrasing (not inferred from scenario
+count), #3 counted only for the story's real branch (not an invented
+mechanism standing in for it) — was applied to all 16 original files, flat
+`/12`, no completeness axis, no N/A carve-outs (that redesign comes next).
+
+| story | Haiku baseline | Haiku+skill | Sonnet baseline | Sonnet+skill | Opus baseline† | Opus+skill† |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 RDP rule | 7/12 | 11/12 | 6/12 | 11/12 | 7/12 | 11/12 |
+| 2 audio config | 6/12 | 11/12 | 7/12 | **12/12** | 7/12 | 11/12 |
+| 3b comparison | 8/12 | 11/12 | 9/12 | 11/12 | 10/12 | 11/12 |
+| 4 SSL exclusion | 8/12 | 10/12 | 7/12 | **12/12** | 8/12 | 12/12 |
+
+† Opus numbers are the original scores against the lost `ASSERTIONS.md` — a
+different instrument, shown for direction only, same caveat as elsewhere in
+this document.
+
+**What the correction changed:** the baselines now converge. Haiku
+(7, 6, 8, 8), Sonnet (6, 7, 9, 7), and Opus (7, 7, 10, 8) sit within one or
+two points of each other on every story. The first-pass numbers had Haiku's
+baseline looking unusually strong and Sonnet's unusually weak on story 1 —
+that gap does not survive the correction; it was a scoring artifact, not a
+tier effect. The skill arms converge too, clustering at 10–12/12 across all
+three tiers on every story.
+
+**The conclusion this forces:** under a flat `/12` rubric with no
+completeness axis, **tier predicts neither the baseline score nor the
+skill-arm score** on this benchmark. The one tier-dependent difference found
+anywhere in this project — Haiku's reliable single-branch stop on story 4,
+Sonnet's reliable two-branch coverage — only became visible once rubric v2
+separated "violated no listed rule" from "addressed the whole story." A flat
+rubric cannot see that difference; it was never a #1–#12 violation, which is
+exactly why it survived two independent reruns undetected by rubric v1 and
+had to be found by adding a different axis, not by scoring harder on the
+existing one.
+
+### Rubric v2
+
+Applied to the same 16 files, no regeneration needed for 15 of them:
+
+- Dropped old #3 ("negative/boundary case present") — folded into the new
+  completeness axis below, to stop double-counting the same gap once as a
+  fixed-criterion failure and once as a coverage failure.
+- #7 (one consistent phrasing) and #12 (compact, no near-duplicates) are only
+  evaluable when a file has ≥2 scenarios or an Outline with ≥2 Examples rows —
+  below that, a file cannot be inconsistent with itself or duplicate itself,
+  so these two go **N/A and drop out of the denominator** rather than scoring
+  a free pass. #9 (no raw config table) and #11 (self-contained/readable)
+  stay in the fixed set: both are meaningful even at one scenario — the
+  sonnet-story1 baseline proves it, one scenario, and it still fails #9 with
+  a four-row config table.
+- **New: a completeness axis**, sized per story from the literal branches the
+  story text implies (not from what any arm's output happened to cover, to
+  avoid scoring the rubric on the models' own choices):
+  - Story 1 (2 branches): rule present → connects; rule absent → denied.
+  - Story 2 (3 branches): exactly one active source → correctly configured;
+    zero active → misconfigured; two+ active → misconfigured (the two
+    failure directions of "only one").
+  - Story 3b (3 branches): fixed metrics computed; a dynamic metric is
+    configured and shown; the comparison runs automatically per server type.
+  - Story 4 (2 branches): an exempted banking site connects without SSL
+    errors; a non-exempted site still goes through inspection — the contrast
+    needed to show the exemption did anything.
+
+| story | branches (max) | Haiku baseline | Haiku+skill | Sonnet baseline | Sonnet+skill |
+|---|---|:---:|:---:|:---:|:---:|
+| 1 RDP rule | 2 | 8/13 (62%)* | 12/13 (92%) | 5/11 (45%) | 12/13 (92%) |
+| 2 audio config | 3 | 6/14 (43%) | 13/14 (93%) | 6/12 (50%) | 13/14 (93%) |
+| 3b response comparison | 3 | 10/14 (71%) | 13/14 (93%) | 9/12 (75%) | 13/14 (93%) |
+| 4 SSL exclusion | 2 | 8/13 (62%) | 9/11 (82%) | 6/11 (55%) | **13/13 (100%)** |
+
+\* Corrected after audit — see below. First pass had this at 10/13 (77%).
+
+Percentages, not raw `/12`, because the denominator now varies per file
+(N/A criteria drop out) — a raw score would make files of different length
+look falsely comparable again, the same mistake being corrected.
+
+**What changed for real:** story 4 (see its own rubric audit above) and story 1
+(audited below). Stories 2 and 3b didn't move, since the old rubric wasn't
+wrong there, only at the extremes this project happened to produce — a
+one-line file (story 4) and a three-scenario file whose problems were spread
+thin enough to slip past the first pass (story 1).
+
+### Rubric audit: Haiku baseline story 1 (10/13 → 8/13)
+
+Prompted by the question this correction answers: Haiku's baseline scored
+noticeably higher than Sonnet's on story 1 (77% vs 45%) — surprising, since
+baselines usually track tier. Re-reading both files against the rubric
+criterion by criterion turned up three scoring errors, all in Haiku's favor.
+
+**#2 ("no entity-appears-in-list pattern") was wrongly marked failed.**
+Haiku's file never says anything appears in a list or config:
+
+```gherkin
+Then port 3389 is open to external networks
+And the appliance accepts incoming RDP connections
+```
+
+"Port 3389 is open" was scored as if it were the same class of problem as
+Sonnet's literal `Then the rule should appear in the rules list` — the exact
+trap named in the original Opus benchmark. It isn't the same thing: a port
+number is a protocol fact, and this project's own with-skill analysis for
+this story treats keeping the port number as a defensible, reviewable detail,
+not a violation. Conflating "has some mechanism-flavored line" with "has the
+specific list-appears pattern" cost Haiku a point it should have kept.
+
+**#7 (one consistent phrasing) and #12 (no near-duplicate scenarios) were
+wrongly marked passed.** Scenario 1 and Scenario 2 both test the same thing —
+rule enabled, admin connects, connection succeeds — with no new variable
+between them, and each renders "the connection succeeded" differently
+(`the appliance accepts incoming RDP connections` / `the connection succeeds`
+/ `the appliance accepts the RDP session` — three phrasings, one idea). That
+is exactly what #7 and #12 exist to catch; the first pass missed it because
+it was reading scenario count, not scenario content.
+
+**Completeness was wrongly marked 2/2.** Scenario 3 does not test the
+story's actual negative branch (no rule → denied). It keeps the rule enabled
+in its `Given` and introduces an "unauthorized IP" concept the story never
+mentions — an invented mechanism standing in for the real negative case, not
+a demonstration of it. Credited as full branch coverage, this should have
+been 1/2.
+
+Net correction: fixed 6/9→7/9 (+1 from #2), conditional 2/2→0/2 (−2 from
+#7/#12), completeness 2/2→1/2 (−1). Total 10/13 (77%) → 8/13 (62%).
+
+**The corrected finding is different from the original one, not just a
+smaller number.** Sonnet's baseline failure is concentrated and literal — one
+scenario, the exact classic trap (a config data table plus "appears in the
+list"). Haiku's baseline failure is the same severity spread across three
+scenarios as redundancy, inconsistent phrasing, and an invented negative case
+standing in for the real one. "Haiku's baseline is cleaner than Sonnet's" is
+not supported; "Haiku and Sonnet fail differently, and the first-pass rubric
+only had eyes for Sonnet's failure mode" is.
+
+### Re-run: all 4 stories, both tiers, second independent sample
+
+Regenerated the skill arm for every story at both tiers once more — same
+prompts, no hints added (same method as the rest of the project: the
+baseline/skill split is the only thing that differs between arms; the model
+never sees the previous run or the rubric). 8 new files, same rubric v2.
+
+| story | Haiku+skill run 1 | Haiku+skill run 2 | Sonnet+skill run 1 | Sonnet+skill run 2 |
+|---|:---:|:---:|:---:|:---:|
+| 1 RDP rule | 92% (completeness 2/2) | 82% (completeness **1/2**) | 92% (completeness 2/2) | 92% (completeness 2/2) |
+| 2 audio config | 93% (completeness 3/3) | 93% (completeness **2/3**) | 93% (completeness 2/3) | 100% (completeness **3/3**) |
+| 3b response comparison | 93% (completeness 3/3) | 93% (completeness 3/3) | 93% (completeness 3/3) | 86% (completeness **2/3**) |
+| 4 SSL exclusion | 82% (completeness 1/2) | 82% (completeness 1/2) | 100% (completeness 2/2) | 100% (completeness 2/2) |
+
+Bold = the value moved between runs.
+
+**Only story 4 replicated cleanly.** Two independent Haiku runs, same shape —
+one scenario, the exempt branch only, never the non-exempt contrast. Two
+independent Sonnet runs, same shape — both branches, every time. That is a
+real, repeatable tier difference: Haiku follows the skill's actual rules
+correctly (outcome-level `Then`, no mechanism leak, no transport vocabulary)
+but stops at the first branch that satisfies the story; Sonnet reaches for
+the Outline and covers both without being asked, consistently.
+
+**Every other story moved, and not in one direction.** Haiku's own score on
+story 1 dropped 10 points between runs (run 1 tested both the matching-rule
+and the no-rule case; run 2 tested only the happy path). Sonnet's own score
+on story 3b dropped 7 points (run 1 had an explicit "runs automatically for
+every server type" scenario; run 2 didn't, testing "web" and "database" in
+separate scenarios instead of tying them together). Sonnet's score on story 2
+*improved* 7 points between runs. None of these three stories show the same
+gap twice — the run-to-run movement within one tier is the same size as, or
+bigger than, the gap between tiers.
+
+**What this means for the story-4 claim specifically, and no further:** at
+n=2 per arm, only a difference that reproduces identically both times is
+distinguishable from noise. Story 4 does that (82/82 vs 100/100 — zero
+overlap, zero movement). Stories 1, 2, and 3b do not — their single-run
+comparisons earlier in this document should be read as **one data point each,
+not a settled result**, pending more samples (n=5 or so per arm, matching the
+Opus story-benchmark's original sample size, would be the minimum to say
+anything about a general Haiku-vs-Sonnet completeness gap beyond story 4).
 
 † Opus numbers are the **original** scores from the "## Results" table above,
 scored against the lost `ASSERTIONS.md`, not this new rubric. They are shown
